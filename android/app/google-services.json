@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "906897181814",
+    "project_id": "animax-2523d",
+    "storage_bucket": "animax-2523d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:906897181814:android:9a324e48e0c5bec519e357",
+        "android_client_info": {
+          "package_name": "com.example.anime_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "906897181814-7aiflcqvpdf8qkm64tqp5g45if9q2eq6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxzFzW8Z3VWjFe7pzEL50twConh1MlRV8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "906897181814-7aiflcqvpdf8qkm64tqp5g45if9q2eq6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
