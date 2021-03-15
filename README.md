@@ -17,7 +17,12 @@ Algumas funções a serem implementados.
 - [chewie](https://pub.dev/packages/chewie)
 - [flutter_video_cast](https://pub.dev/packages/flutter_video_cast)
 
-Caso precise de ajuda entre em contato.
+## Algumas imagens do App.
+
+- [Img App](https://ibb.co/album/gzJwV5)
+
+## Caso precise de ajuda entre em contato.
+
 [Meu WebSite](#), WebSite em breve!,
 E-mail: ruandutrab@hotmail.com
 
