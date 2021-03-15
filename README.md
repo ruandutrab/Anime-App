@@ -2,7 +2,7 @@
 
 Um projeto em Flutter, para quem gosta de Animes.
 
-## Fncionabilidades
+## Funcionalidades
 
     Até o momento o aplicativo em termos de estrutura, está bem completo, porém ainda falta
 Algumas funções a serem implementados.
