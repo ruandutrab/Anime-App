@@ -30,12 +30,17 @@ dependencies:
   cupertino_icons: ^1.0.0
   cloud_firestore: ^1.0.1
   firebase_core: ^1.0.1
-  slidy: ^2.2.1
+  # slidy: ^2.2.1
   flutter_statusbarcolor: ^0.2.3
   video_player: ^2.0.0
   material_design_icons_flutter: ^4.0.5345
   chewie: ^1.0.0
+ # Plugin para o Flutter Cast(Chrome).
   flutter_video_cast: ^1.0.3
+ # Plugin para o SqFlite(sqlite).
+  sqflite: ^2.0.0+2
+ # Plugin que permite gerênciar pastas no android. 
+  path_provider: ^2.0.1
   
 dev_dependencies:
   flutter_test:
