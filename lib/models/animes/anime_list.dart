@@ -1,7 +1,5 @@
-import 'dart:ui';
 import 'package:anime_app/models/animes/video_player.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AnimeList extends StatelessWidget {
@@ -26,21 +24,28 @@ class AnimeList extends StatelessWidget {
               .snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (snapshot.hasError) {
-              return Center(
-                child: Text('Error Inesperado ${snapshot.error}'),
-              );
-            }
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CircularProgressIndicator(),
-                    SizedBox(
-                      height: 10,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('Carregando...'),
                     ),
-                    Text('Carregando...')
+                  ],
+                ),
+              );
+            }
+            if (snapshot.hasError) {
+              return Center(
+                child: Column(
+                  children: [
+                    CircularProgressIndicator(),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('Erro!'),
+                    ),
                   ],
                 ),
               );
@@ -50,10 +55,10 @@ class AnimeList extends StatelessWidget {
                 child: Column(
                   children: [
                     CircularProgressIndicator(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text('Aguardando dados...')
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('Aguardando dados...'),
+                    )
                   ],
                 ),
               );
@@ -63,75 +68,46 @@ class AnimeList extends StatelessWidget {
               // scrollDirection: Axis.vertical,
               itemCount: snapshot.data.docs.length,
               itemBuilder: (BuildContext context, int i) {
-                var docs = snapshot.data.docs[i];
+                var item = snapshot.data.docs[i];
 
-                return Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(width: 1.0, color: Colors.grey[850]),
-                    ),
-                  ),
-                  padding: EdgeInsets.all(4),
-                  child: Stack(
-                    children: [
-                      Container(
-                        child: Stack(
-                          children: [
-                            ClipRRect(
-                              child: Image.network(
-                                docs.data()['img_card'],
-                                width: 100,
-                                height: 100,
-                              ),
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                          ],
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MediaPlayer(
+                          linkEp: item.data()['link'],
+                          nome: item.data()['nome'],
+                          episodio: item.data()['episodio'],
                         ),
                       ),
-                      Stack(
-                        children: [
-                          Container(
-                            // color: Colors.white.withOpacity(0.9),
-                            height: 105,
-                            width: 230,
-                            child: Stack(
-                              children: [
-                                Positioned(
-                                  left: 110,
-                                  bottom: 49,
-                                  child: Text(
-                                    'Episódio: ${docs.data()['episodio']}',
-                                    style: TextStyle(
-                                        fontSize: 20, color: Colors.white),
-                                  ),
-                                ),
-                              ],
+                    );
+                  },
+                  child: Container(
+                    decoration:
+                        BoxDecoration(border: Border.all(), color: Colors.blue),
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: ClipRRect(
+                            child: Image.network(
+                              item.data()['img_card'],
+                              width: 100,
+                              height: 100,
                             ),
+                            borderRadius: BorderRadius.circular(4),
                           ),
-                          Positioned(
-                            child: Container(
-                              width: double.infinity,
-                              height: 110,
-                              // color: Colors.white.withOpacity(0.9),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => MediaPlayer(
-                                        linkEp: docs.data()['link'],
-                                        nome: docs.data()['nome'],
-                                        episodio: docs.data()['episodio'],
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'Episódio: ${item.data()['episodio']}',
+                            style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
-                        ],
-                      )
-                    ],
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },

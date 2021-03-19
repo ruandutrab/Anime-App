@@ -1,6 +1,7 @@
 import 'package:anime_app/models/animes/anime_list.dart';
 import 'package:anime_app/models/sub_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class HomeAnime extends StatelessWidget {
   final String idAnime;
@@ -21,6 +22,10 @@ class HomeAnime extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return Scaffold(
         backgroundColor: Colors.black,
         body: Stack(

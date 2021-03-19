@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:anime_app/models/sqlite/connection.dart';
+import 'package:anime_app/models/sqlite/anime_db_interface.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 
