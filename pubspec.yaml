@@ -41,6 +41,8 @@ dependencies:
   sqflite: ^2.0.0+2
  # Plugin que permite gerênciar pastas no android. 
   path_provider: ^2.0.1
+ # Plugin Google Fonts
+  google_fonts: ^2.0.0 
   
 dev_dependencies:
   flutter_test:

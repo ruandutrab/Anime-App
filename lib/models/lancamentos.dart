@@ -7,11 +7,15 @@ class Lancamentos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue[500],
-        title: Text(
-          'Lançamentos',
-          style: TextStyle(fontStyle: FontStyle.italic),
+      backgroundColor: Colors.black,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(40.0),
+        child: AppBar(
+          backgroundColor: Colors.blue[500],
+          title: Text(
+            'Lançamentos',
+            style: TextStyle(fontStyle: FontStyle.italic),
+          ),
         ),
       ),
       body: StreamBuilder(
@@ -52,6 +56,7 @@ class Lancamentos extends StatelessWidget {
               ),
             );
           }
+
           return ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: snapshot.data.docs.length,
@@ -59,9 +64,7 @@ class Lancamentos extends StatelessWidget {
               var item = snapshot.data.docs[i];
 
               return Container(
-                color: Colors.grey[200],
                 child: Row(
-                  // crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
                       padding: EdgeInsets.all(3),
@@ -118,7 +121,7 @@ class Lancamentos extends StatelessWidget {
                             // The custom button
                             child: Container(
                               width: 100,
-                              height: 170,
+                              height: 150,
                               child: Container(
                                 color: Colors.black.withOpacity(0),
                               ),
@@ -126,9 +129,6 @@ class Lancamentos extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),
-                    Container(
-                      width: 5,
                     ),
                   ],
                 ),

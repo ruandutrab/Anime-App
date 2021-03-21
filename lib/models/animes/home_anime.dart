@@ -22,10 +22,6 @@ class HomeAnime extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
     return Scaffold(
         backgroundColor: Colors.black,
         body: Stack(
@@ -89,15 +85,17 @@ class HomeAnime extends StatelessWidget {
                           top: 35,
                           right: 10,
                           child: Container(
+                            width: 30,
+                            height: 30,
+                            alignment: Alignment.center,
                             decoration: BoxDecoration(
                                 color: Colors.grey[850],
                                 borderRadius: BorderRadius.circular(50)),
-                            alignment: Alignment.center,
                             child: IconButton(
                                 icon: Icon(
                                   Icons.favorite_border,
                                   color: Colors.white,
-                                  size: 30,
+                                  size: 20,
                                 ),
                                 onPressed: () {}),
                           ),
@@ -236,10 +234,10 @@ class HomeAnime extends StatelessWidget {
                       alignment: Alignment.center,
                       children: [
                         Positioned(
-                          top: MediaQuery.of(context).size.height / 2.1,
+                          top: 340,
                           child: Container(
                             padding: EdgeInsets.all(9),
-                            width: MediaQuery.of(context).size.width / 1.1,
+                            width: 350,
                             decoration: BoxDecoration(
                                 color: Colors.grey[900],
                                 borderRadius: BorderRadius.circular(8)),

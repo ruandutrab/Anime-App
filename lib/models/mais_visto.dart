@@ -6,11 +6,15 @@ class MaisVisto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue[500],
-        title: Text(
-          'Animes mais visto',
-          style: TextStyle(fontStyle: FontStyle.italic),
+      backgroundColor: Colors.black,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(40.0),
+        child: AppBar(
+          backgroundColor: Colors.blue[500],
+          title: Text(
+            'Animes mais visto',
+            style: TextStyle(fontStyle: FontStyle.italic),
+          ),
         ),
       ),
       body: StreamBuilder(
@@ -58,7 +62,7 @@ class MaisVisto extends StatelessWidget {
               var item = snapshot.data.docs[i];
 
               return Container(
-                color: Colors.grey[200],
+                // color: Colors.grey[200],
                 child: Row(
                   // crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -117,7 +121,7 @@ class MaisVisto extends StatelessWidget {
                             // The custom button
                             child: Container(
                               width: 100,
-                              height: 170,
+                              height: 150,
                               child: Container(
                                 color: Colors.black.withOpacity(0),
                               ),
@@ -125,9 +129,6 @@ class MaisVisto extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),
-                    Container(
-                      width: 5,
                     ),
                   ],
                 ),

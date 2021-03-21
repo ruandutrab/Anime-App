@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'animes/anime_list.dart';
 import 'lancamentos.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -20,8 +21,11 @@ class HomePage extends StatelessWidget {
         accentColor: Colors.black,
       ),
       home: Scaffold(
+        backgroundColor: Colors.black,
         appBar: AppBar(
-          title: Text('Animes'),
+          shadowColor: Colors.black,
+          title:
+              Text('Animes', style: GoogleFonts.orbitron(color: Colors.black)),
           actions: <Widget>[
             IconButton(
               onPressed: () {},
@@ -29,7 +33,42 @@ class HomePage extends StatelessWidget {
             )
           ],
         ),
-        // backgroundColor: Colors.black45,
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              Center(
+                  child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Login',
+                  style: GoogleFonts.acme(fontSize: 22),
+                ),
+              )),
+              Container(
+                child: Column(
+                  children: [
+                    TextFormField(
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.person),
+                        labelText: 'User',
+                        hintText: 'Your user name.',
+                      ),
+                    ),
+                    // User password.
+                    TextFormField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.lock),
+                        labelText: 'Password',
+                        hintText: 'Your password.',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
         body: StreamBuilder(
           stream:
               FirebaseFirestore.instance.collection('home_page').snapshots(),
