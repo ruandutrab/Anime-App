@@ -1,6 +1,6 @@
+import 'package:anime_app/app/ui/android/pages/home_anime.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'animes/home_anime.dart';
 
 class MaisVisto extends StatelessWidget {
   @override
@@ -60,7 +60,9 @@ class MaisVisto extends StatelessWidget {
             itemCount: snapshot.data.docs.length,
             itemBuilder: (BuildContext context, int i) {
               var item = snapshot.data.docs[i];
-
+              if (i >= 10) {
+                return null;
+              }
               return Container(
                 // color: Colors.grey[200],
                 child: Row(

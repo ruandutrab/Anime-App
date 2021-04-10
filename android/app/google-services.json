@@ -7,12 +7,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:906897181814:android:9a324e48e0c5bec519e357",
+        "mobilesdk_app_id": "1:906897181814:android:72e7198ce358c90619e357",
         "android_client_info": {
-          "package_name": "com.example.anime_app"
+          "package_name": "com.animax.app"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "906897181814-1iq5q6dko558l2f1q3mv8uk4eqp60o77.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.animax.app",
+            "certificate_hash": "4fe68e1b28f4eb04ecdffd3279900937978c17c9"
+          }
+        },
         {
           "client_id": "906897181814-7aiflcqvpdf8qkm64tqp5g45if9q2eq6.apps.googleusercontent.com",
           "client_type": 3

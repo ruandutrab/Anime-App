@@ -1,9 +1,11 @@
-import 'package:anime_app/models/animes/anime_list.dart';
-import 'package:anime_app/models/sub_bar.dart';
+import 'package:anime_app/app/controller/home_controller.dart';
+import 'package:anime_app/app/ui/android/model/sub_bar.dart';
+import 'package:anime_app/app/ui/android/pages/anime_list.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
-class HomeAnime extends StatelessWidget {
+class HomeAnime extends StatefulWidget {
   final String idAnime;
   final String nomeAnime;
   final String imgCard;
@@ -20,6 +22,46 @@ class HomeAnime extends StatelessWidget {
     this.completed,
     this.idAnime,
   }) : super(key: key);
+
+  @override
+  _HomeAnimeState createState() => _HomeAnimeState();
+}
+
+class _HomeAnimeState extends State<HomeAnime> {
+  final HomeController _homeController = Get.find<HomeController>();
+  final db = FirebaseFirestore.instance;
+  bool favorita = false;
+  Map userFavorite;
+
+  @override
+  void initState() {
+    Future<void> getFevorite() async {
+      //query the user photo
+      await FirebaseFirestore.instance
+          .collection("users")
+          .doc('${_homeController.userModel.email}')
+          .snapshots()
+          .listen((event) {
+        userFavorite = event.get("favorite");
+        if (userFavorite['${widget.idAnime}'] == null) {
+          db
+              .collection('users')
+              .doc('${_homeController.userModel.email}')
+              .update({"favorite.${widget.idAnime}": favorita});
+        } else {
+          setState(() {
+            favorita = userFavorite['${widget.idAnime}'];
+          });
+        }
+      });
+    }
+
+    super.initState();
+    setState(() {
+      getFevorite();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +93,7 @@ class HomeAnime extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                '$nomeAnime',
+                                '${widget.nomeAnime}',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 18,
@@ -73,7 +115,7 @@ class HomeAnime extends StatelessWidget {
                             ),
                           ),
                           child: ClipRRect(
-                            child: Image.network('$imgCard'),
+                            child: Image.network('${widget.imgCard}'),
                           ),
                         ),
                         //  ..................
@@ -83,21 +125,33 @@ class HomeAnime extends StatelessWidget {
                       children: [
                         Positioned(
                           top: 35,
-                          right: 10,
+                          right: 15,
                           child: Container(
-                            width: 30,
-                            height: 30,
+                            width: 35,
+                            height: 35,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
                                 color: Colors.grey[850],
                                 borderRadius: BorderRadius.circular(50)),
                             child: IconButton(
-                                icon: Icon(
-                                  Icons.favorite_border,
-                                  color: Colors.white,
-                                  size: 20,
-                                ),
-                                onPressed: () {}),
+                              onPressed: () async {
+                                setState(() {});
+                                await db
+                                    .collection('users')
+                                    .doc('${_homeController.userModel.email}')
+                                    .update({
+                                  "favorite.${widget.idAnime}": favorita
+                                });
+                                favorita = !favorita;
+                              },
+                              icon: Icon(
+                                favorita
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: Colors.white,
+                                size: 20,
+                              ),
+                            ),
                           ),
                         ),
                       ],
@@ -113,7 +167,7 @@ class HomeAnime extends StatelessWidget {
                               borderRadius: BorderRadius.circular(2),
                             ),
                             child: Text(
-                              '$releaseYear',
+                              '${widget.releaseYear}',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 15,
@@ -134,7 +188,7 @@ class HomeAnime extends StatelessWidget {
                               borderRadius: BorderRadius.circular(2),
                             ),
                             child: Text(
-                              '$completed',
+                              '${widget.completed}',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 12,
@@ -171,8 +225,8 @@ class HomeAnime extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => AnimeList(
-                                    idAnime: idAnime,
-                                    nomeAnime: nomeAnime,
+                                    idAnime: widget.idAnime,
+                                    nomeAnime: widget.nomeAnime,
                                   ),
                                 ),
                               );
@@ -242,7 +296,7 @@ class HomeAnime extends StatelessWidget {
                                 color: Colors.grey[900],
                                 borderRadius: BorderRadius.circular(8)),
                             child: Text(
-                              '$description',
+                              '${widget.description}',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontStyle: FontStyle.italic),

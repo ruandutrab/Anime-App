@@ -30,7 +30,7 @@ class _MediaPlayerState extends State<MediaPlayer> {
       appBar: AppBar(
         backgroundColor: Colors.blue[700],
         title: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(0.0),
           child: Text('${widget.nome} EP ${widget.episodio}'),
         ),
         actions: <Widget>[
@@ -42,7 +42,7 @@ class _MediaPlayerState extends State<MediaPlayer> {
             onRoutesClosed: () => print('closed'),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+            padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
             child: ChromeCastButton(
               size: MediaPlayer._iconSize,
               color: Colors.white,

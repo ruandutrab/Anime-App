@@ -29,6 +29,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
   cloud_firestore: ^1.0.1
+  firebase_auth: ^1.0.1
   firebase_core: ^1.0.1
   # slidy: ^2.2.1
   flutter_statusbarcolor: ^0.2.3
@@ -42,12 +43,20 @@ dependencies:
  # Plugin que permite gerênciar pastas no android. 
   path_provider: ^2.0.1
  # Plugin Google Fonts
-  google_fonts: ^2.0.0 
+  google_fonts: ^2.0.0
+ # Permite acessar uma URL externa. 
+  url_launcher: ^6.0.3
+ # change_app_package_name: ^0.1.2 -> Muda o packname do app
+  get: ^4.1.1
+  get_storage: ^2.0.2
+  
+  
   
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  moor_generator:
+  build_runner:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -55,7 +64,8 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - images/dots.gif
+    - images/op-1.png
+    - images/op-2.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

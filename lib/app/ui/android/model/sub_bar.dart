@@ -1,5 +1,7 @@
+import 'package:anime_app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
 
 class SubBar extends StatelessWidget {
   @override
@@ -18,7 +20,7 @@ class SubBar extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.pushReplacementNamed(context, "/homepage");
+                      Get.offAllNamed(Routes.HOME);
                     },
                     child: Text(
                       'INICIAL',

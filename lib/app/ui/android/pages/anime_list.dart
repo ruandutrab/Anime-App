@@ -1,6 +1,7 @@
-import 'package:anime_app/models/animes/video_player.dart';
+import 'package:anime_app/app/ui/android/pages/video_player.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AnimeList extends StatelessWidget {
   final String idAnime;
@@ -69,6 +70,11 @@ class AnimeList extends StatelessWidget {
               itemCount: snapshot.data.docs.length,
               itemBuilder: (BuildContext context, int i) {
                 var item = snapshot.data.docs[i];
+                var _url = item.data()['link'];
+                // ignore: unused_element
+                void _launchURL() async => await canLaunch(_url)
+                    ? await launch(_url)
+                    : throw 'Could not launch $_url';
 
                 return GestureDetector(
                   onTap: () {
@@ -76,7 +82,7 @@ class AnimeList extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => MediaPlayer(
-                          linkEp: item.data()['link'],
+                          linkEp: '$_url',
                           nome: item.data()['nome'],
                           episodio: item.data()['episodio'],
                         ),

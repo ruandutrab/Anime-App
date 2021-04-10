@@ -1,4 +1,4 @@
-import 'package:anime_app/models/animes/home_anime.dart';
+import 'package:anime_app/app/ui/android/pages/home_anime.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
