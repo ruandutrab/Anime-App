@@ -1,5 +1,6 @@
 import 'package:anime_app/app/controller/home_controller.dart';
 import 'package:anime_app/app/controller/login_controller.dart';
+import 'package:anime_app/app/ui/android/model/favoritos.dart';
 import 'package:anime_app/app/ui/android/model/lancamentos.dart';
 import 'package:anime_app/app/ui/android/model/mais_visto.dart';
 import 'package:anime_app/app/ui/android/model/sub_bar.dart';
@@ -136,6 +137,10 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     height: 200,
                     child: MaisVisto(),
+                  ),
+                  Container(
+                    height: 200,
+                    child: FavoritoPage(),
                   ),
                 ],
               );

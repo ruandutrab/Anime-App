@@ -25,7 +25,7 @@ class LoginApiClient {
           .collection('users')
           .doc('${currentUser.email}')
           .set({
-        'nome': 'Ruan',
+        'nome': '${currentUser.displayName}',
         'favorite': Map(),
         'lastview': Map(),
       });

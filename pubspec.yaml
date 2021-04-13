@@ -49,6 +49,7 @@ dependencies:
  # change_app_package_name: ^0.1.2 -> Muda o packname do app
   get: ^4.1.1
   get_storage: ^2.0.2
+  rxdart: ^0.26.0
   
   
   
