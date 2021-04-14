@@ -66,68 +66,58 @@ class Lancamentos extends StatelessWidget {
               return Container(
                 child: Row(
                   children: [
-                    Container(
-                      padding: EdgeInsets.all(3),
-                      child: Stack(
-                        alignment: Alignment.bottomCenter,
-                        children: [
-                          ClipRRect(
-                            child: Image.network(
-                              item.data()['img_card'],
-                              height: 150,
+                    GestureDetector(
+                      onTap: () {
+                        String id = item.id;
+                        // Captura o documento que foi clicado
+                        FirebaseFirestore.instance
+                            .collection('animes_list')
+                            .doc(item.id)
+                            .update({
+                          'views': FieldValue.increment(1),
+                        });
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomeAnime(
+                                      idAnime: id,
+                                      nomeAnime: item.data()['nome'],
+                                      imgCard: item.data()['img_card'],
+                                      releaseYear: item.data()['release_date'],
+                                      description: item.data()['description'],
+                                      completed: item.data()['completed'],
+                                    )));
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(3),
+                        child: Stack(
+                          alignment: Alignment.bottomCenter,
+                          children: [
+                            ClipRRect(
+                              child: Image.network(
+                                item.data()['img_card'],
+                                height: 150,
+                              ),
+                              borderRadius: BorderRadius.circular(5),
                             ),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(2),
-                            padding: EdgeInsets.all(2),
-                            // alignment: Alignment.bottomCenter,
-                            decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(2),
-                            ),
-                            child: Text(
-                              item.data()['nome'],
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.white,
+                            Container(
+                              margin: EdgeInsets.all(2),
+                              padding: EdgeInsets.all(2),
+                              // alignment: Alignment.bottomCenter,
+                              decoration: BoxDecoration(
+                                color: Colors.black.withOpacity(0.5),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                              child: Text(
+                                item.data()['nome'],
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              String id = item.id;
-                              // Captura o documento que foi clicado
-                              FirebaseFirestore.instance
-                                  .collection('animes_list')
-                                  .doc(item.id)
-                                  .update({
-                                'views': FieldValue.increment(1),
-                              });
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HomeAnime(
-                                            idAnime: id,
-                                            nomeAnime: item.data()['nome'],
-                                            imgCard: item.data()['img_card'],
-                                            releaseYear:
-                                                item.data()['release_date'],
-                                            description:
-                                                item.data()['description'],
-                                            completed: item.data()['completed'],
-                                          )));
-                            },
-                            // The custom button
-                            child: Container(
-                              width: 100,
-                              height: 150,
-                              child: Container(
-                                color: Colors.black.withOpacity(0),
-                              ),
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],
