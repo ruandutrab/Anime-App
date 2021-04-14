@@ -37,7 +37,7 @@ class _HomeAnimeState extends State<HomeAnime> {
   void initState() {
     Future<void> getFevorite() async {
       //query the user photo
-      await FirebaseFirestore.instance
+      FirebaseFirestore.instance
           .collection("users")
           .doc('${_homeController.userModel.email}')
           .snapshots()

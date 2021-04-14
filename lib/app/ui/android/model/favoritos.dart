@@ -1,10 +1,10 @@
-import 'package:anime_app/app/controller/home_controller.dart';
+import 'dart:convert';
 import 'package:anime_app/app/ui/android/pages/home_anime.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
-final HomeController _homeController = Get.find<HomeController>();
+// final HomeController _homeController = Get.find<HomeController>();
 
 class FavoritoPage extends StatefulWidget {
   @override
@@ -12,33 +12,19 @@ class FavoritoPage extends StatefulWidget {
 }
 
 class _FavoritoPageState extends State<FavoritoPage> {
-  @override
-  void initState() {
-    super.initState();
-    var _combineStream;
-    _combineStream = FirebaseFirestore.instance
-        .collection('chat')
-        .orderBy("timestamp", descending: true)
-        .snapshots()
-        .map((convert) {
-      return convert.docs.map((f) {
-        Stream<Messages> messages = Stream.value(f)
-            .map<Messages>((document) => Messages.fromSnapshot(document));
+  List data;
+  Future<String> getJSONData() async {
+    // final url =
+    //     Uri.parse('https://unsplash.com/napi/photos/Q14J2k8VE3U/related');
+    final url = Uri.parse(
+        'https://raw.githubusercontent.com/ruandutrab/apirestanime/main/animes/naruto.json');
 
-        Stream<Users> user = FirebaseFirestore.instance
-            .collection("users")
-            .doc(f.data()['uid'])
-            .snapshots()
-            .map<Users>((document) => Users.fromSnapshot(document));
+    var response = await http.get(url);
 
-        return Rx.combineLatest2(
-            messages, user, (messages, user) => CombineStream(messages, user));
-      });
-    }).switchMap((observables) {
-      return observables.length > 0
-          ? Rx.combineLatestList(observables)
-          : Stream.value([]);
-    });
+    data = jsonDecode(response.body)['naruto'];
+
+    print(data);
+    return 'Dados obtidos';
   }
 
   @override
@@ -55,129 +41,96 @@ class _FavoritoPageState extends State<FavoritoPage> {
           ),
         ),
       ),
-      body: StreamBuilder(
-        stream: FirebaseFirestore.instance
-            .collection('animes_list')
-            .orderBy('views', descending: true)
-            .snapshots(),
-        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (snapshot.hasError) {
-            return Center(
-              child: Text('Error Inesperado ${snapshot.error}'),
-            );
-          }
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircularProgressIndicator(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text('Carregando...')
-                ],
-              ),
-            );
-          }
-          if (!snapshot.hasData) {
-            return Center(
-              child: Column(
-                children: [
-                  CircularProgressIndicator(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text('Aguardando dados...')
-                ],
-              ),
-            );
-          }
-          return ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: snapshot.data.docs.length,
-            itemBuilder: (BuildContext context, int i) {
-              var item = snapshot.data.docs[i];
-              // print(item.data());
-              // if (i >= 10) {
-              //   return null;
-              // }
-              return Container(
-                // color: Colors.grey[200],
-                child: Row(
-                  // crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(3),
-                      child: Stack(
-                        alignment: Alignment.bottomCenter,
-                        children: [
-                          ClipRRect(
-                            child: Image.network(
-                              item.data()['img_card'],
-                              height: 150,
-                            ),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(2),
-                            padding: EdgeInsets.all(2),
-                            // alignment: Alignment.bottomCenter,
-                            decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(2),
-                            ),
-                            child: Text(
-                              item.data()['nome'],
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              String id = item.id;
-                              // Captura o documento que foi clicado
-                              FirebaseFirestore.instance
-                                  .collection('animes_list')
-                                  .doc(item.id)
-                                  .update({
-                                'views': FieldValue.increment(1),
-                              });
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HomeAnime(
-                                            idAnime: id,
-                                            nomeAnime: item.data()['nome'],
-                                            imgCard: item.data()['img_card'],
-                                            releaseYear:
-                                                item.data()['release_date'],
-                                            description:
-                                                item.data()['description'],
-                                            completed: item.data()['completed'],
-                                          )));
-                            },
-                            // The custom button
-                            child: Container(
-                              width: 100,
-                              height: 150,
-                              child: Container(
-                                color: Colors.black.withOpacity(0),
-                              ),
-                            ),
-                          ),
-                        ],
+      body: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: data == null ? 0 : data.length,
+        itemBuilder: (BuildContext context, int i) {
+          var item = data[i];
+
+          print(item['nome']);
+          // if (i >= 10) {
+          //   return null;
+          // }
+          return Container(
+            // color: Colors.grey[200],
+            child: Row(
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(3),
+                  child: Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: [
+                      ClipRRect(
+                        child: Image.network(
+                          item['img_card'],
+                          height: 150,
+                        ),
+                        borderRadius: BorderRadius.circular(5),
                       ),
-                    ),
-                  ],
+                      Container(
+                        margin: EdgeInsets.all(2),
+                        padding: EdgeInsets.all(2),
+                        // alignment: Alignment.bottomCenter,
+                        decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(2),
+                        ),
+                        child: Text(
+                          item.data()['nome'],
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          String id = item.id;
+                          // Captura o documento que foi clicado
+                          FirebaseFirestore.instance
+                              .collection('animes_list')
+                              .doc(item.id)
+                              .update({
+                            'views': FieldValue.increment(1),
+                          });
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomeAnime(
+                                        idAnime: id,
+                                        nomeAnime: item.data()['nome'],
+                                        imgCard: item.data()['img_card'],
+                                        releaseYear:
+                                            item.data()['release_date'],
+                                        description: item.data()['description'],
+                                        completed: item.data()['completed'],
+                                      )));
+                        },
+                        // The custom button
+                        child: Container(
+                          width: 100,
+                          height: 150,
+                          child: Container(
+                            color: Colors.black.withOpacity(0),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              );
-            },
+              ],
+            ),
           );
         },
       ),
     );
+  }
+
+  @override
+  void initState() {
+    this.getJSONData();
+    print(data);
+    super.initState();
   }
 }
