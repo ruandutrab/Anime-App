@@ -4,12 +4,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class FavoritoPage extends StatefulWidget {
+class AllFavoritos extends StatefulWidget {
   @override
-  _FavoritoPageState createState() => _FavoritoPageState();
+  _AllFavoritosState createState() => _AllFavoritosState();
 }
 
-class _FavoritoPageState extends State<FavoritoPage> {
+class _AllFavoritosState extends State<AllFavoritos> {
   final HomeController _homeController = Get.find<HomeController>();
   List<String> animes = [];
   @override
@@ -66,6 +66,7 @@ class _FavoritoPageState extends State<FavoritoPage> {
                   'Favoritos',
                   style: TextStyle(fontStyle: FontStyle.italic),
                 ),
+                centerTitle: true,
               ),
             ),
             body: StreamBuilder(
@@ -105,8 +106,12 @@ class _FavoritoPageState extends State<FavoritoPage> {
                   );
                 }
 
-                return ListView.builder(
-                  scrollDirection: Axis.horizontal,
+                return GridView.builder(
+                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 150,
+                      childAspectRatio: 3.4 / 4,
+                      crossAxisSpacing: 0,
+                      mainAxisSpacing: 20),
                   itemCount: snapshot.data.docs.length,
                   itemBuilder: (BuildContext context, int i) {
                     var item = snapshot.data.docs[i];
@@ -122,6 +127,8 @@ class _FavoritoPageState extends State<FavoritoPage> {
 
                     return Container(
                       child: Row(
+                        
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           GestureDetector(
                             onTap: () {

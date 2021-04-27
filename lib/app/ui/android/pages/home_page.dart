@@ -1,9 +1,11 @@
 import 'package:anime_app/app/controller/home_controller.dart';
 import 'package:anime_app/app/controller/login_controller.dart';
 import 'package:anime_app/app/ui/android/model/favoritos.dart';
+import 'package:anime_app/app/ui/android/model/lacamentos_ano.dart';
 import 'package:anime_app/app/ui/android/model/lancamentos.dart';
 import 'package:anime_app/app/ui/android/model/mais_visto.dart';
 import 'package:anime_app/app/ui/android/model/sub_bar.dart';
+import 'package:anime_app/app/ui/android/pages/search_anime.dart';
 import 'package:anime_app/routes/app_routes.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +18,35 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<String> animes = [];
+  @override
+  void initState() {
+    var userFavorite;
+    Future<void> getFavorite() async {
+      //query the user photo
+      FirebaseFirestore.instance
+          .collection("users")
+          .doc('${_homeController.userModel.email}')
+          .snapshots()
+          .listen((event) {
+        setState(() {
+          userFavorite = event.get("favorite");
+          // print(userFavorite);
+          userFavorite.forEach((key, value) {
+            if (value == true) {
+              animes.add(key);
+            }
+          });
+        });
+      });
+    }
+
+    super.initState();
+    setState(() {
+      getFavorite();
+    });
+  }
+
   final HomeController _homeController = Get.find<HomeController>();
   @override
   Widget build(BuildContext context) {
@@ -90,63 +121,40 @@ class _HomePageState extends State<HomePage> {
                 fontSize: 25)),
         actions: <Widget>[
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SearchAnime()));
+            },
             icon: Icon(Icons.search),
           ),
         ],
       ),
-      body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('home_page').snapshots(),
-        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircularProgressIndicator(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text('Carregando...')
-                ],
+      body: ListView(
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              SubBar(),
+              Container(
+                height: 200,
+                child: Lancamentos(),
               ),
-            );
-          }
-          if (snapshot.hasError) {
-            return Center(
-              child: Text('Error Inesperado ${snapshot.error}'),
-            );
-          }
-          if (!snapshot.hasData) {
-            return Center(
-              child: Text('Aguardando dados...'),
-            );
-          }
-
-          return ListView.builder(
-            itemCount: snapshot.data.docs.length,
-            itemBuilder: (BuildContext context, int i) {
-              // var item = snapshot.data.documents[i];
-              return Column(
-                children: [
-                  SubBar(),
-                  Container(
-                    height: 200,
-                    child: Lancamentos(),
-                  ),
-                  Container(
-                    height: 200,
-                    child: MaisVisto(),
-                  ),
-                  Container(
-                    height: 200,
-                    child: FavoritoPage(),
-                  ),
-                ],
-              );
-            },
-          );
-        },
+              Container(
+                height: 200,
+                child: MaisVisto(),
+              ),
+              animes.isEmpty
+                  ? Container()
+                  : Container(
+                      height: 200,
+                      child: FavoritoPage(),
+                    ),
+              Container(
+                height: 200,
+                child: LancamentosAno(),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

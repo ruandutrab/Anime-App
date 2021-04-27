@@ -72,8 +72,11 @@ class RegisterPage extends StatelessWidget {
                             return null;
                           },
                           decoration: InputDecoration(
-                            hintText: 'Nome',
-                          ),
+                              hintText: 'Nome',
+                              contentPadding: new EdgeInsets.symmetric(
+                                  vertical: 25.0, horizontal: 10.0),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(32.0))),
                         ),
                         SizedBox(
                           height: 10,
@@ -89,8 +92,11 @@ class RegisterPage extends StatelessWidget {
                             return null;
                           },
                           decoration: InputDecoration(
-                            hintText: 'E-mail',
-                          ),
+                              hintText: 'E-mail',
+                              contentPadding: new EdgeInsets.symmetric(
+                                  vertical: 25.0, horizontal: 10.0),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(32.0))),
                         ),
                         SizedBox(
                           height: 10,
@@ -107,8 +113,11 @@ class RegisterPage extends StatelessWidget {
                           },
                           obscureText: true,
                           decoration: InputDecoration(
-                            hintText: 'Password',
-                          ),
+                              hintText: 'Password',
+                              contentPadding: new EdgeInsets.symmetric(
+                                  vertical: 20.0, horizontal: 10.0),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(32.0))),
                         ),
                         SizedBox(
                           height: 10,
