@@ -34,7 +34,7 @@ dependencies:
   # slidy: ^2.2.1
   flutter_statusbarcolor: ^0.2.3
   video_player: ^2.0.0
-  material_design_icons_flutter: ^4.0.5345
+  material_design_icons_flutter: ^5.0.5955-rc.1
   chewie: ^1.0.0
  # Plugin para o Flutter Cast(Chrome).
   flutter_video_cast: ^1.0.3
@@ -64,9 +64,9 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   uses-material-design: true
-  assets:
-    - images/op-1.png
-    - images/op-2.png
+  # assets:
+  #   - images/op-1.png
+  #   - images/op-2.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

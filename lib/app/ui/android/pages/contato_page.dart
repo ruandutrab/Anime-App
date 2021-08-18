@@ -48,6 +48,7 @@ class _ContatoPageState extends State<ContatoPage> {
     List<Map<String, String>> dataList = [];
 
     String msgAviso =
+        // ignore: unnecessary_brace_in_string_interps
         "     Olá ${nome}, use esse campo para dar a sua opnião sobre o nosso App, ou para dar sugestão de animes.";
     return Scaffold(
       appBar: AppBar(
@@ -196,6 +197,7 @@ class _ContatoPageState extends State<ContatoPage> {
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(notSend);
                   }
+                  // ignore: unused_element
                   void dispose() {
                     // Clean up the controller when the widget is removed from the
                     // widget tree.

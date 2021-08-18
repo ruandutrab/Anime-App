@@ -5,7 +5,7 @@ class AvisoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var data = DateTime.now();
-    var dia = data.day;
+
     var mes = data.month;
 
     print(mes);
@@ -59,8 +59,10 @@ class AvisoPage extends StatelessWidget {
                                 ),
                                 Positioned(
                                   bottom: 55,
-                                  left:
-                                      MediaQuery.of(context).size.width / 1.25,
+                                  left: MediaQuery.of(context).size.width <= 413
+                                      ? MediaQuery.of(context).size.width / 1.25
+                                      : MediaQuery.of(context).size.width /
+                                          1.15,
                                   child: RotationTransition(
                                     turns: AlwaysStoppedAnimation(50 / 360),
                                     child: Container(

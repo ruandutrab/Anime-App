@@ -135,14 +135,13 @@ class _HomeAnimeState extends State<HomeAnime> {
                                 borderRadius: BorderRadius.circular(50)),
                             child: IconButton(
                               onPressed: () async {
-                                setState(() {});
+                                // favorita = !favorita;
                                 await db
                                     .collection('users')
                                     .doc('${_homeController.userModel.email}')
                                     .update({
-                                  "favorite.${widget.idAnime}": favorita
+                                  "favorite.${widget.idAnime}": !favorita
                                 });
-                                favorita = !favorita;
                               },
                               icon: Icon(
                                 favorita

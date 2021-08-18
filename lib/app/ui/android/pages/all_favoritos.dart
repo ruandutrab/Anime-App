@@ -45,15 +45,6 @@ class _AllFavoritosState extends State<AllFavoritos> {
 
   @override
   Widget build(BuildContext context) {
-    var index = 0;
-    var animesLength;
-    // if (animes.isEmpty) {
-    //   animes.add('Empty');
-    // }
-    if (animes.length >= 1) {
-      animesLength = animes.length - 1;
-    }
-
     return animes.isEmpty
         ? Container()
         : Scaffold(
@@ -66,7 +57,6 @@ class _AllFavoritosState extends State<AllFavoritos> {
                   'Favoritos',
                   style: TextStyle(fontStyle: FontStyle.italic),
                 ),
-                centerTitle: true,
               ),
             ),
             body: StreamBuilder(
@@ -106,29 +96,15 @@ class _AllFavoritosState extends State<AllFavoritos> {
                   );
                 }
 
-                return GridView.builder(
-                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 150,
-                      childAspectRatio: 3.4 / 4,
-                      crossAxisSpacing: 0,
-                      mainAxisSpacing: 20),
+                return ListView.builder(
+                  scrollDirection: Axis.horizontal,
                   itemCount: snapshot.data.docs.length,
                   itemBuilder: (BuildContext context, int i) {
                     var item = snapshot.data.docs[i];
                     var items = snapshot.data.docs[i].id;
-                    index = 0;
-
-                    if (items != animes[index]) {
-                      while (
-                          (items != animes[index]) & (index < animesLength)) {
-                        index++;
-                      }
-                    }
 
                     return Container(
                       child: Row(
-                        
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           GestureDetector(
                             onTap: () {
@@ -154,7 +130,7 @@ class _AllFavoritosState extends State<AllFavoritos> {
                                             completed: item.data()['completed'],
                                           )));
                             },
-                            child: (items == animes[index])
+                            child: (animes.contains(items))
                                 ? Container(
                                     padding: EdgeInsets.all(3),
                                     child: Stack(
