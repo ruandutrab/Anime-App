@@ -103,15 +103,16 @@ class LancamentosAno extends StatelessWidget {
                               borderRadius: BorderRadius.circular(5),
                             ),
                             Container(
+                              width: 100,
                               margin: EdgeInsets.all(2),
                               padding: EdgeInsets.all(2),
-                              // alignment: Alignment.bottomCenter,
                               decoration: BoxDecoration(
                                 color: Colors.black.withOpacity(0.5),
                                 borderRadius: BorderRadius.circular(2),
                               ),
                               child: Text(
                                 item.data()['nome'],
+                                textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 12,
                                   color: Colors.white,

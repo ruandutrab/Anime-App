@@ -70,7 +70,7 @@ class _HomeAnimeState extends State<HomeAnime> {
           alignment: Alignment.center,
           children: [
             Positioned(
-              top: 25,
+              top: 30,
               child: Container(
                 width: MediaQuery.of(context).size.width / 1,
                 child: SubBar(),
