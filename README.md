@@ -4,8 +4,7 @@ Um projeto em Flutter, para quem gosta de Animes.
 
 ## Funcionalidades
 
-    Até o momento o aplicativo em termos de estrutura, está bem completo, porém ainda falta
-Algumas funções a serem implementados.
+    Até o momento o aplicativo em termos de estrutura, está bem completo, porém ainda falta algumas funções a serem implementados.
 
 ## Tecnologias usadas nesse projeto.
 
