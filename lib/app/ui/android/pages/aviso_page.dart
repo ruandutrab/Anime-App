@@ -45,13 +45,13 @@ class AvisoPage extends StatelessWidget {
                                       isThreeLine: true,
                                       leading: Icon(Icons.email),
                                       title: Text(
-                                        "${item.data()['title']}",
+                                        "${item['title'].data()}",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 17),
                                       ),
                                       subtitle: Text(
-                                        "${item.data()['message']}",
+                                        "${item['message'].data()}",
                                         style: TextStyle(
                                             fontStyle: FontStyle.italic),
                                       ),
@@ -86,13 +86,13 @@ class AvisoPage extends StatelessWidget {
                                   isThreeLine: true,
                                   leading: Icon(Icons.email),
                                   title: Text(
-                                    "${item.data()['title']}",
+                                    "${item['title'].data()}",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 17),
                                   ),
                                   subtitle: Text(
-                                    "${item.data()['message']}",
+                                    "${item['message'].data()}",
                                     style:
                                         TextStyle(fontStyle: FontStyle.italic),
                                   ),

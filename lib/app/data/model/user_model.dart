@@ -13,7 +13,9 @@ class UserModel {
       : id = currentUser.uid,
         nome = currentUser.displayName,
         email = currentUser.email,
-        urlimage = currentUser.photoURL;
+        urlimage = currentUser.photoURL == null
+            ? 'https://flyclipart.com/thumb2/download-person-free-vector-png-137844.png'
+            : currentUser.photoURL;
 
   Map<String, dynamic> toJson() {
     return {

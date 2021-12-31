@@ -83,11 +83,11 @@ class LancamentosAno extends StatelessWidget {
                             MaterialPageRoute(
                                 builder: (context) => HomeAnime(
                                       idAnime: id,
-                                      nomeAnime: item.data()['nome'],
-                                      imgCard: item.data()['img_card'],
-                                      releaseYear: item.data()['release_date'],
-                                      description: item.data()['description'],
-                                      completed: item.data()['completed'],
+                                      nomeAnime: item.get('nome'),
+                                      imgCard: item.get('img_card'),
+                                      releaseYear: item.get('img_card'),
+                                      description: item.get('description'),
+                                      completed: item.get('completed'),
                                     )));
                       },
                       child: Container(
@@ -97,7 +97,7 @@ class LancamentosAno extends StatelessWidget {
                           children: [
                             ClipRRect(
                               child: Image.network(
-                                item.data()['img_card'],
+                                item.get('img_card'),
                                 height: 150,
                               ),
                               borderRadius: BorderRadius.circular(5),
@@ -111,7 +111,7 @@ class LancamentosAno extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(2),
                               ),
                               child: Text(
-                                item.data()['nome'],
+                                item.get('nome'),
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 12,

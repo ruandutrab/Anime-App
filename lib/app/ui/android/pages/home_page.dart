@@ -50,19 +50,13 @@ class _HomePageState extends State<HomePage> {
   final HomeController _homeController = Get.find<HomeController>();
   @override
   Widget build(BuildContext context) {
-    final avatar = _homeController.userModel.urlimage == null
-        ? CircleAvatar(
-            radius: 30.0,
-            child: Icon(
-              Icons.person,
-              size: 70,
-            ),
-          )
-        : CircleAvatar(
-            radius: 30.0,
-            backgroundImage: NetworkImage(
-                'https://scontent.fsdu31-1.fna.fbcdn.net/v/t1.6435-9/94612538_10221640301066422_5891628298890379264_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=Ai3SzqDf2DUAX-GnS0n&_nc_ht=scontent.fsdu31-1.fna&oh=c88185332e0650a3bf5609c0dadf82a9&oe=608E8163'),
-          );
+    final avatar = CircleAvatar(
+      radius: 30.0,
+      child: Icon(
+        Icons.person,
+        size: 70,
+      ),
+    );
     return Scaffold(
       drawer: Drawer(
         elevation: 1.5,

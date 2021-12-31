@@ -121,13 +121,12 @@ class _AllFavoritosState extends State<AllFavoritos> {
                                   MaterialPageRoute(
                                       builder: (context) => HomeAnime(
                                             idAnime: id,
-                                            nomeAnime: item.data()['nome'],
-                                            imgCard: item.data()['img_card'],
-                                            releaseYear:
-                                                item.data()['release_date'],
+                                            nomeAnime: item.get('nome'),
+                                            imgCard: item.get('img_card'),
+                                            releaseYear: item.get('img_card'),
                                             description:
-                                                item.data()['description'],
-                                            completed: item.data()['completed'],
+                                                item.get('description'),
+                                            completed: item.get('completed'),
                                           )));
                             },
                             child: (animes.contains(items))
@@ -138,7 +137,7 @@ class _AllFavoritosState extends State<AllFavoritos> {
                                       children: [
                                         ClipRRect(
                                           child: Image.network(
-                                            item.data()['img_card'],
+                                            item.get('img_card'),
                                             height: 150,
                                           ),
                                           borderRadius:
@@ -155,7 +154,7 @@ class _AllFavoritosState extends State<AllFavoritos> {
                                                 BorderRadius.circular(2),
                                           ),
                                           child: Text(
-                                            item.data()['nome'],
+                                            item.get('nome'),
                                             style: TextStyle(
                                               fontSize: 12,
                                               color: Colors.white,
