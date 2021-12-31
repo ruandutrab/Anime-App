@@ -30,7 +30,7 @@ class LoginApiClient {
         'lastview': Map(),
       });
       // Atualizar o nome do usuário.
-      await currentUser.updateProfile(displayName: name);
+      await currentUser.updateDisplayName(name);
       await currentUser.reload();
 
       return UserModel.fromSnapshot(currentUser);

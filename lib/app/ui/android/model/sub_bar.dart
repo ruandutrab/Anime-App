@@ -1,6 +1,7 @@
 import 'package:anime_app/app/ui/android/pages/all_favoritos.dart';
 import 'package:anime_app/app/ui/android/pages/aviso_page.dart';
 import 'package:anime_app/app/ui/android/pages/contato_page.dart';
+import 'package:anime_app/app/ui/android/pages/home_page.dart';
 import 'package:anime_app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -23,7 +24,8 @@ class SubBar extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                      Get.offAllNamed(Routes.HOME);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (builder) => HomePage()));
                     },
                     child: Text(
                       'INICIAL',
