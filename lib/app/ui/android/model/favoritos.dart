@@ -140,7 +140,8 @@ class _FavoritoPageState extends State<FavoritoPage> {
                                             idAnime: id,
                                             nomeAnime: item.get('nome'),
                                             imgCard: item.get('img_card'),
-                                            releaseYear: item.get('img_card'),
+                                            releaseYear:
+                                                item.get('release_date'),
                                             description:
                                                 item.get('description'),
                                             completed: item.get('completed'),

@@ -31,7 +31,6 @@ class _HomePageState extends State<HomePage> {
           .listen((event) {
         setState(() {
           userFavorite = event.get("favorite");
-          // print(userFavorite);
           userFavorite.forEach((key, value) {
             if (value == true) {
               animes.add(key);
