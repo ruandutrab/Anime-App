@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:anime_app/app/controller/anime_controller.dart';
 import 'package:anime_app/app/controller/home_controller.dart';
 import 'package:anime_app/app/data/model/anime_model.dart';
+import 'package:anime_app/app/services/anime_list_service.dart';
 import 'package:anime_app/app/ui/android/pages/video_player.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +36,14 @@ class _AnimeListState extends State<AnimeList> {
     });
   }
 
+  // getPlayerLink() async {
+  //   AnimeApi.getLink().then((response) {
+  //     Iterable ep = jsonDecode(response.body);
+  //     var linkFull = ep.map((model) => GetLink.fromJson(model));
+  //     link = linkFull.single.getLink;
+  //   });
+  // }
+
   @override
   void initState() {
     _getAnime();
@@ -44,7 +52,6 @@ class _AnimeListState extends State<AnimeList> {
 
   @override
   Widget build(BuildContext context) {
-    print(view.getViews('${widget.idAnime}'));
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -74,7 +81,6 @@ class _AnimeListState extends State<AnimeList> {
               index++;
             }
           }
-
           return GestureDetector(
             onTap: () {
               Navigator.pushReplacement(

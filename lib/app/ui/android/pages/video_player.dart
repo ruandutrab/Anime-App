@@ -24,7 +24,6 @@ class _MediaPlayerState extends State<MediaPlayer> {
   @override
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(Colors.blue);
-
     return Scaffold(
       backgroundColor: Colors.black45,
       appBar: AppBar(

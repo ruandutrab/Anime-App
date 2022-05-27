@@ -49,7 +49,9 @@ dependencies:
  # change_app_package_name: ^0.1.2 -> Muda o packname do app
   get: ^4.1.1
   get_storage: ^2.0.2
-  http: ^0.13.1
+  http: ^0.13.4
+  youtube_explode_dart: ^1.10.8
+  direct_link: ^0.1.8
   
   
   

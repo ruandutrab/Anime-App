@@ -23,7 +23,7 @@ class MaterialConf extends StatelessWidget {
       enableLog: false,
       theme: ThemeData(
         primaryColor: Style.primary(),
-        accentColor: Colors.black,
+        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.black),
       ),
     );
   }
