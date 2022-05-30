@@ -1,6 +1,5 @@
 import 'package:anime_app/app/ui/android/model/firestore_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FirestoreSearchScaffold extends StatefulWidget {

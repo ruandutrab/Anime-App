@@ -8,7 +8,12 @@ import 'package:get_storage/get_storage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+      options: FirebaseOptions(
+          apiKey: "AIzaSyAxzFzW8Z3VWjFe7pzEL50twConh1MlRV8",
+          appId: "1:906897181814:android:72e7198ce358c90619e357",
+          messagingSenderId: "",
+          projectId: "906897181814"));
   await GetStorage.init();
   runApp(MaterialConf());
 }

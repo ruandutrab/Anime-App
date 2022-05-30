@@ -27,31 +27,31 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.0
-  cloud_firestore: ^3.1.5
-  firebase_auth: ^3.3.4
-  firebase_core: ^1.0.1
+  cupertino_icons: ^1.0.4
+  cloud_firestore: ^3.1.17
+  firebase_auth: ^3.3.19
+  firebase_core: ^1.17.1
   # slidy: ^2.2.1
-  flutter_statusbarcolor: ^0.2.3
-  video_player: ^2.0.0
-  material_design_icons_flutter: ^5.0.5955-rc.1
-  chewie: ^1.0.0
+  # flutter_statusbarcolor: ^0.2.3
+  video_player: ^2.4.2
+  material_design_icons_flutter: ^5.0.6595
+  chewie: ^1.3.3
  # Plugin para o Flutter Cast(Chrome).
   flutter_video_cast: ^1.0.3
  # Plugin para o SqFlite(sqlite).
-  sqflite: ^2.0.0+2
+  sqflite: ^2.0.2+1
  # Plugin que permite gerênciar pastas no android. 
-  path_provider: ^2.0.1
+  path_provider: ^2.0.10
  # Plugin Google Fonts
-  google_fonts: ^2.0.0
+  google_fonts: ^3.0.1
  # Permite acessar uma URL externa. 
-  url_launcher: ^6.0.3
+  url_launcher: ^6.1.2
  # change_app_package_name: ^0.1.2 -> Muda o packname do app
-  get: ^4.1.1
-  get_storage: ^2.0.2
+  get: ^4.6.5
+  get_storage: ^2.0.3
   http: ^0.13.4
-  youtube_explode_dart: ^1.10.8
-  direct_link: ^0.1.8
+  youtube_explode_dart: ^1.11.0
+  direct_link: ^0.1.9
   
   
   

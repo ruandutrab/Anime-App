@@ -1,5 +1,5 @@
 import 'package:anime_app/app/data/repository/login.repository.dart';
-import 'package:anime_app/app/data/model/user_model.dart';
+import 'package:anime_app/app/ui/android/model/user_model.dart';
 import 'package:anime_app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:anime_app/app/data/model/user_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+
+import '../../ui/android/model/user_model.dart';
 
 class LoginApiClient {
   FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
