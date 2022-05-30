@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:anime_app/app/controller/home_controller.dart';
-import 'package:anime_app/app/data/model/anime_model.dart';
+import 'package:anime_app/app/ui/android/model/anime_model.dart';
 import 'package:anime_app/app/services/anime_list_service.dart';
 import 'package:anime_app/app/ui/android/pages/video_player.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -31,7 +31,7 @@ class _AnimeListState extends State<AnimeList> {
     AnimeApi.getAnime("${widget.idAnime}.json").then((response) {
       setState(() {
         Iterable lista = jsonDecode(response.body);
-        animes = lista.map((model) => Anime.fromJson(model)).toList();
+        animes = lista.map((model) => AnimeModel.fromJson(model)).toList();
       });
     });
   }
@@ -65,8 +65,9 @@ class _AnimeListState extends State<AnimeList> {
         itemBuilder: (BuildContext context, int i) {
           var _url = animes[i].link;
 
-          // ignore: unused_element
+          // ignore: unused_element, deprecated_member_use
           void _launchURL() async => await canLaunch(_url)
+              // ignore: deprecated_member_use
               ? await launch(_url)
               : throw 'Could not launch $_url';
           int index = 0;

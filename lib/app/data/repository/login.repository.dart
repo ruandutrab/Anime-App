@@ -1,5 +1,6 @@
 import 'package:anime_app/app/data/provider/login_provider.dart';
-import 'package:anime_app/app/data/model/user_model.dart';
+
+import '../../ui/android/model/user_model.dart';
 
 class LoginRepository {
   final LoginApiClient apiClient = LoginApiClient();
