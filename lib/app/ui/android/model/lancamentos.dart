@@ -1,4 +1,3 @@
-import 'package:anime_app/app/ui/android/pages/contato_page.dart';
 import 'package:anime_app/app/ui/android/pages/home_anime.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +17,7 @@ class Lancamentos extends StatelessWidget {
           ),
         ),
       ),
-      body: StreamBuilder(
+      body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('animes_list')
             .orderBy('release_date', descending: true)
@@ -56,13 +55,12 @@ class Lancamentos extends StatelessWidget {
               ),
             );
           }
-
           return ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: snapshot.data.docs.length,
             itemBuilder: (BuildContext context, int i) {
               var item = snapshot.data.docs[i];
-
+              print(item);
               return Container(
                 child: Row(
                   children: [

@@ -1,9 +1,6 @@
 import 'package:anime_app/app/controller/home_controller.dart';
 import 'package:anime_app/app/controller/login_controller.dart';
-import 'package:anime_app/app/ui/android/model/favoritos.dart';
-import 'package:anime_app/app/ui/android/model/lacamentos_ano.dart';
 import 'package:anime_app/app/ui/android/model/lancamentos.dart';
-import 'package:anime_app/app/ui/android/model/mais_visto.dart';
 import 'package:anime_app/app/ui/android/model/sub_bar.dart';
 import 'package:anime_app/app/ui/android/pages/search_anime.dart';
 import 'package:anime_app/routes/app_routes.dart';
@@ -11,6 +8,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../model/favoritos.dart';
+import '../model/lacamentos_ano.dart';
+import '../model/mais_visto.dart';
 
 class HomePage extends StatefulWidget {
   @override

@@ -2,10 +2,7 @@ import 'package:anime_app/app/ui/android/pages/all_favoritos.dart';
 import 'package:anime_app/app/ui/android/pages/aviso_page.dart';
 import 'package:anime_app/app/ui/android/pages/contato_page.dart';
 import 'package:anime_app/app/ui/android/pages/home_page.dart';
-import 'package:anime_app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:get/get.dart';
 
 class SubBar extends StatelessWidget {
   @override

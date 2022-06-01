@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_video_cast/flutter_video_cast.dart';
 import 'package:video_player/video_player.dart';
 import 'package:chewie/chewie.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 class MediaPlayer extends StatefulWidget {
   final String linkEp;
@@ -23,7 +22,7 @@ class _MediaPlayerState extends State<MediaPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Colors.blue);
+    // FlutterStatusbarcolor.setStatusBarColor(Colors.blue);
     return Scaffold(
       backgroundColor: Colors.black45,
       appBar: AppBar(
