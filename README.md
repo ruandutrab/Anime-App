@@ -18,7 +18,7 @@ Um projeto em Flutter, para quem gosta de Animes.
 
 ## Algumas imagens do App.
 
-<img src="">
+<img src="https://github.com/ruandutrab/Anime-App/blob/Flutter3.0/anime.gif">
 
 ## Caso precise de ajuda entre em contato.
 
