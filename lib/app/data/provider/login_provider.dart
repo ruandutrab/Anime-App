@@ -117,7 +117,7 @@ class LoginApiClient {
     }
   }
 
-  Future<UserModel> singOut() {
+  Future<void> singOut() {
     box.write('auth', null);
     return _firebaseAuth.signOut();
   }
