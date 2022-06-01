@@ -13,7 +13,7 @@ está funcional.
 - [chewie](https://pub.dev/packages/chewie)
 - [flutter_video_cast](https://pub.dev/packages/flutter_video_cast)
 
-## Gif com a aplicação funcionando.
+## Gif do App.
 
 <img src="https://github.com/ruandutrab/Anime-App/blob/Flutter3.0/anime.gif">
 
