@@ -18,7 +18,7 @@ Um projeto em Flutter, para quem gosta de Animes.
 
 ## Algumas imagens do App.
 
-- [Img App](https://ibb.co/album/gzJwV5)
+<img src="">
 
 ## Caso precise de ajuda entre em contato.
 
