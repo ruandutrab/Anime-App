@@ -1,12 +1,9 @@
-# Anime App
+<h1> Anime App </h1>
 
-Um projeto em Flutter, para quem gosta de Animes.
+Esse projeto foi desenvolvido para crescimento pessoal, a aplicação ainda não está completa, porém,
+está funcional.
 
-## Funcionalidades
-
-    Até o momento o aplicativo em termos de estrutura, está bem completo, porém ainda falta algumas funções a serem implementados.
-
-## Tecnologias usadas nesse projeto.
+## Alguma das bibliotecas usadas.
 
 - [cloud_firestore](https://pub.dev/packages/cloud_firestore)
 - [firebase_core](https://pub.dev/packages/firebase_core)
@@ -16,14 +13,9 @@ Um projeto em Flutter, para quem gosta de Animes.
 - [chewie](https://pub.dev/packages/chewie)
 - [flutter_video_cast](https://pub.dev/packages/flutter_video_cast)
 
-## Algumas imagens do App.
+## Gif do App.
 
-- [Img App](https://ibb.co/album/gzJwV5)
+<img src="https://github.com/ruandutrab/Anime-App/blob/Flutter3.0/anime.gif">
 
-## Caso precise de ajuda entre em contato.
 
-[Meu WebSite](#), WebSite em breve!,
-E-mail: ruandutrab@hotmail.com
-
-Obrigado!
 

@@ -79,7 +79,7 @@ class Lancamentos extends StatelessWidget {
                             MaterialPageRoute(
                                 builder: (context) => HomeAnime(
                                       idAnime: id,
-                                      nomeAnime: item.data(),
+                                      nomeAnime: item.get('nome'),
                                       imgCard: item.get('img_card'),
                                       releaseYear: item.get('release_date'),
                                       description: item.get('description'),
