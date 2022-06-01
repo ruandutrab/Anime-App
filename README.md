@@ -1,4 +1,4 @@
-<h1> Anime App <h1>
+<h1> Anime App </h1>
 
 Esse projeto foi desenvolvido para crescimento pessoal, a aplicação ainda não está completa, porém,
 está funcional.
